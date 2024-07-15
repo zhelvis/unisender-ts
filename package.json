@@ -1,7 +1,18 @@
 {
   "name": "unisender-ts",
+  "description": "Typescript Interface for Unisender GO web API",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Vladimir Zhelvis",
+    "email": "zhelvisvladimir@gmail.com",
+    "url": "https://github.com/zhelvis"
+  },
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "clear": "rm -rf ./dist",

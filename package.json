@@ -1,0 +1,22 @@
+{
+  "name": "unisender-ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "clear": "rm -rf ./dist",
+    "build": "bun run clear && tsc",
+    "format": "biome format --write ./src",
+    "lint": "biome lint --write ./src"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
+}

@@ -1,12 +1,12 @@
 import { sendRequest } from "./common";
 
-type EmailSubscribeRequestParams = {
+export type EmailSubscribeRequestParams = {
 	from_email: string;
 	from_name: string;
 	to_email: string;
 };
 
-type EmailSubscribeResponseData = {
+export type EmailSubscribeResponseData = {
 	status: "success";
 };
 

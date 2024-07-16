@@ -14,11 +14,11 @@ type Cause =
 	| "spamtrap"
 	| "smtp_connection_failed";
 
-type EmailValidateRequestParams = {
+export type EmailValidateRequestParams = {
 	email: string;
 };
 
-type EmailValidateResponseData = {
+export type EmailValidateResponseData = {
 	status: "success";
 	email: string;
 	result: Status;

@@ -74,11 +74,11 @@ type FailedEmailStatus =
 	| "complained"
 	| "blocked";
 
-type EmailSendRequestParams = {
+export type EmailSendRequestParams = {
 	message: EmailSendMessage;
 };
 
-type EmailSendResponseData = {
+export type EmailSendResponseData = {
 	status: "success";
 	job_id: string;
 	emails: string[];

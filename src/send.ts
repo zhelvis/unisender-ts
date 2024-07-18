@@ -89,8 +89,9 @@ export async function send(
 	baseUrl: string,
 	key: string,
 	params: EmailSendRequestParams,
+	sendRequestImpl = sendRequest,
 ): Promise<EmailSendResponseData> {
-	return sendRequest<EmailSendResponseData>(
+	return sendRequestImpl<EmailSendResponseData>(
 		baseUrl,
 		"/email/send.json",
 		key,

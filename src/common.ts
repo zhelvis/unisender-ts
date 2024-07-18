@@ -4,7 +4,7 @@ type ErrorResponseData = {
 	code: number;
 };
 
-class ApiError extends Error {
+export class ApiError extends Error {
 	public code: number;
 
 	constructor(data: ErrorResponseData) {
@@ -19,8 +19,9 @@ export async function sendRequest<T>(
 	path: string,
 	key: string,
 	params: unknown,
+	fetchImpl = fetch,
 ): Promise<T> {
-	const response = await fetch(`${baseUrl}${path}`, {
+	const response = await fetchImpl(`${baseUrl}${path}`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

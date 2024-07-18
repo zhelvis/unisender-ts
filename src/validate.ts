@@ -36,8 +36,9 @@ export async function validate(
 	baseUrl: string,
 	key: string,
 	params: EmailValidateRequestParams,
+	sendRequestImpl = sendRequest,
 ): Promise<EmailValidateResponseData> {
-	return sendRequest<EmailValidateResponseData>(
+	return sendRequestImpl<EmailValidateResponseData>(
 		baseUrl,
 		"/email-validation/single.json",
 		key,

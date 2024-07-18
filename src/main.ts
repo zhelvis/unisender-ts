@@ -18,28 +18,26 @@ export class Unisender {
 	constructor(
 		private baseUrl: string,
 		private apiKey: string,
-        private api = {
-            send,
-            subscribe,
-            validate,
-        },
+		private sendImpl = send,
+		private subscribeImpl = subscribe,
+		private validateImpl = validate,
 	) {}
 
 	public async send(
 		params: EmailSendRequestParams,
 	): Promise<EmailSendResponseData> {
-		return this.api.send(this.baseUrl, this.apiKey, params);
+		return this.sendImpl(this.baseUrl, this.apiKey, params);
 	}
 
 	public async subscribe(
 		params: EmailSubscribeRequestParams,
 	): Promise<EmailSubscribeResponseData> {
-		return this.api.subscribe(this.baseUrl, this.apiKey, params);
+		return this.subscribeImpl(this.baseUrl, this.apiKey, params);
 	}
 
 	public async validate(
 		params: EmailValidateRequestParams,
 	): Promise<EmailValidateResponseData> {
-		return this.api.validate(this.baseUrl, this.apiKey, params);
+		return this.validateImpl(this.baseUrl, this.apiKey, params);
 	}
 }

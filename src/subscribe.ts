@@ -14,8 +14,9 @@ export async function subscribe(
 	baseUrl: string,
 	key: string,
 	params: EmailSubscribeRequestParams,
+	sendRequestImpl = sendRequest,
 ): Promise<EmailSubscribeResponseData> {
-	return sendRequest<EmailSubscribeResponseData>(
+	return sendRequestImpl<EmailSubscribeResponseData>(
 		baseUrl,
 		"/email/subscribe.json",
 		key,

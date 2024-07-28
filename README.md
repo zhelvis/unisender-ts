@@ -4,6 +4,8 @@ Typescript Interface for Unisender GO web API.
 
 Based on [Unisender API documentation](https://godocs.unisender.ru/web-api-ref#web-api).
 
+[**API docs**](https://zhelvis.github.io/unisender-ts/index.html)
+
 ## Features
 
 -  Uses the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)

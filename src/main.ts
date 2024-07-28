@@ -18,8 +18,11 @@ export class Unisender {
 	constructor(
 		private baseUrl: string,
 		private apiKey: string,
+		/** @hidden */
 		private sendImpl = send,
+		/** @hidden */
 		private subscribeImpl = subscribe,
+		/** @hidden */
 		private validateImpl = validate,
 	) {}
 

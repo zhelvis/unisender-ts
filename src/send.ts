@@ -1,12 +1,12 @@
 import { sendRequest } from "./common";
 
-type EmailSendAttachment = {
+export type EmailSendAttachment = {
 	type: string;
 	name: string;
 	content: string;
 };
 
-type Language =
+export type Language =
 	| "be"
 	| "de"
 	| "en"
@@ -19,26 +19,26 @@ type Language =
 	| "ua"
 	| "kz";
 
-type TemplateEngine = "simple" | "velocity" | "none";
+export type TemplateEngine = "simple" | "velocity" | "none";
 
-type EmailSendBody = ({ plaintext: string } | { html: string }) & {
+export type EmailSendBody = ({ plaintext: string } | { html: string }) & {
 	amp?: string;
 };
 
-type EmailSendOptions = Partial<{
+export type EmailSendOptions = Partial<{
 	send_at: string;
 	unsubscribe_url: string;
 	custom_backend_id: number;
 	smtp_pool_id: string;
 }>;
 
-type EmailSendRecipient = {
+export type EmailSendRecipient = {
 	email: string;
 	substitutions?: Record<string, unknown>;
 	metadata?: Record<string, string>;
 };
 
-type EmailSendMessage = {
+export type EmailSendMessage = {
 	recipients: EmailSendRecipient[];
 	template_id?: string;
 	tags?: string[];
@@ -65,7 +65,7 @@ type EmailSendMessage = {
 	options?: EmailSendOptions;
 };
 
-type FailedEmailStatus =
+export type FailedEmailStatus =
 	| "unsubscribed"
 	| "invalid"
 	| "duplicate"
@@ -89,6 +89,7 @@ export async function send(
 	baseUrl: string,
 	key: string,
 	params: EmailSendRequestParams,
+	/** @hidden */
 	sendRequestImpl = sendRequest,
 ): Promise<EmailSendResponseData> {
 	return sendRequestImpl<EmailSendResponseData>(

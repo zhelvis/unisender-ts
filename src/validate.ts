@@ -1,8 +1,8 @@
 import { sendRequest } from "./common";
 
-type Status = "valid" | "invalid" | "suspicious" | "unknown";
+export type Status = "valid" | "invalid" | "suspicious" | "unknown";
 
-type Cause =
+export type Cause =
 	| "no_mx_record"
 	| "syntax_error"
 	| "possible_typo"
@@ -36,6 +36,7 @@ export async function validate(
 	baseUrl: string,
 	key: string,
 	params: EmailValidateRequestParams,
+	/** @hidden */
 	sendRequestImpl = sendRequest,
 ): Promise<EmailValidateResponseData> {
 	return sendRequestImpl<EmailValidateResponseData>(

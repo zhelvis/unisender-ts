@@ -14,6 +14,7 @@ export async function subscribe(
 	baseUrl: string,
 	key: string,
 	params: EmailSubscribeRequestParams,
+	/** @hidden */
 	sendRequestImpl = sendRequest,
 ): Promise<EmailSubscribeResponseData> {
 	return sendRequestImpl<EmailSubscribeResponseData>(

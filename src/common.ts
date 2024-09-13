@@ -34,8 +34,8 @@ export async function sendRequest<T>(
 	const data = await response.json();
 
 	if (!response.ok) {
-		throw new ApiError(data);
+		throw new ApiError(data as ErrorResponseData);
 	}
 
-	return data;
+	return data as T;
 }

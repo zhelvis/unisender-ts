@@ -1,5 +1,6 @@
-import { describe, mock, it, expect } from "bun:test";
+import { describe, mock, afterEach, it, expect } from "bun:test";
 import { sendRequest, ApiError } from "../src/common";
+import assert from "assert";
 
 describe("sendRequest", () => {
     const baseUrl = "http://example.com";
@@ -7,8 +8,14 @@ describe("sendRequest", () => {
     const path = "/test";
     const params = { test: "test" };
 
+    const mockedFetch = mock();
+
+    afterEach(() => {
+        mockedFetch.mockClear();
+    });
+
     it("should return response body", async () => {
-        const mockedFetch = mock().mockResolvedValue({
+        mockedFetch.mockResolvedValueOnce({
             json: () => { },
             ok: true,
         });
@@ -28,7 +35,7 @@ describe("sendRequest", () => {
     });
 
     it("should throw API error", async () => {
-        const mockedFetch = mock().mockResolvedValue({
+        mockedFetch.mockResolvedValueOnce({
             json: () => ({
                 status: "error",
                 message: "test",
@@ -41,4 +48,17 @@ describe("sendRequest", () => {
             sendRequest(baseUrl, path, key, params, mockedFetch),
         ).rejects.toBeInstanceOf(ApiError);
     });
+
+    it("should throw unexpected API error", async () => {
+        mockedFetch.mockResolvedValueOnce({
+            json: () => ({
+                data: 'unexpected',
+            }),
+            ok: false,
+        });
+
+        expect(
+            sendRequest(baseUrl, path, key, params, mockedFetch),
+        ).rejects.toBeInstanceOf(Error);
+    })
 });

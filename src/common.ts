@@ -12,6 +12,17 @@ export class ApiError extends Error {
 		this.code = data.code;
 		this.name = "API Error";
 	}
+
+	public static isErrorResponseData(data: unknown): data is ErrorResponseData {
+		return typeof data === 'object'
+			&& data !== null
+			&& 'status' in data
+			&& 'message' in data
+			&& 'code' in data
+			&& data.status === 'error'
+			&& typeof data.message === 'string'
+			&& typeof data.code === 'number';
+	}
 }
 
 export async function sendRequest<T>(
@@ -34,8 +45,13 @@ export async function sendRequest<T>(
 	const data = await response.json();
 
 	if (!response.ok) {
-		throw new ApiError(data as ErrorResponseData);
+		if (ApiError.isErrorResponseData(data)) {
+			throw new ApiError(data);
+		} else {
+			throw new Error('Unexpected API error')
+		}
+			
 	}
 
-	return data as T;
+	return data;
 }

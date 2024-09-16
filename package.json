@@ -10,21 +10,31 @@
   },
   "homepage": "https://zhelvis.github.io/unisender-ts/index.html",
   "repository": "https://github.com/zhelvis/unisender-ts",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "engines": {
+    "node": ">18"
+  },
+  "exports": {
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.cjs.js",
+    "types": "./dist/types/index.d.ts"
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "clear": "rm -rf ./dist",
-    "build": "bun run clear && tsc",
+    "build": "bun run clear && rollup -c rollup.config.js",
     "format": "biome format --write ./src",
     "lint": "biome lint --write ./src",
     "docs": "typedoc --out ./docs ./src/index.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
+    "rollup": "^4.21.3",
+    "tslib": "^2.7.0",
     "typedoc": "^0.26.5"
   },
   "peerDependencies": {

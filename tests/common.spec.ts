@@ -1,6 +1,5 @@
 import { describe, mock, afterEach, it, expect } from "bun:test";
 import { sendRequest, ApiError } from "../src/common";
-import assert from "assert";
 
 describe("sendRequest", () => {
     const baseUrl = "http://example.com";

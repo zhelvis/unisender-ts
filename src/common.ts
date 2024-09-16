@@ -47,10 +47,9 @@ export async function sendRequest<T>(
 	if (!response.ok) {
 		if (ApiError.isErrorResponseData(data)) {
 			throw new ApiError(data);
-		} else {
-			throw new Error('Unexpected API error')
 		}
-			
+
+		throw new Error('Unexpected API error');	
 	}
 
 	return data;

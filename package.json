@@ -12,7 +12,7 @@
   "repository": "https://github.com/zhelvis/unisender-ts",
   "type": "module",
   "engines": {
-    "node": ">18"
+    "node": ">=18"
   },
   "exports": {
     "import": "./dist/index.esm.js",

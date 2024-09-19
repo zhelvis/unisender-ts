@@ -14,14 +14,16 @@ export class ApiError extends Error {
 	}
 
 	public static isErrorResponseData(data: unknown): data is ErrorResponseData {
-		return typeof data === 'object'
-			&& data !== null
-			&& 'status' in data
-			&& 'message' in data
-			&& 'code' in data
-			&& data.status === 'error'
-			&& typeof data.message === 'string'
-			&& typeof data.code === 'number';
+		return (
+			typeof data === "object" &&
+			data !== null &&
+			"status" in data &&
+			"message" in data &&
+			"code" in data &&
+			data.status === "error" &&
+			typeof data.message === "string" &&
+			typeof data.code === "number"
+		);
 	}
 }
 
@@ -49,7 +51,7 @@ export async function sendRequest<T>(
 			throw new ApiError(data);
 		}
 
-		throw new Error('Unexpected API error');	
+		throw new Error("Unexpected API error");
 	}
 
 	return data;

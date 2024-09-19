@@ -1,7 +1,7 @@
 {
   "name": "unisender-ts",
   "description": "Typescript Interface for Unisender GO web API",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Vladimir Zhelvis",
@@ -28,18 +28,18 @@
   ],
   "scripts": {
     "clear": "rm -rf ./dist",
-    "build": "bun run clear && rollup -c rollup.config.js",
+    "build": "bun run clear && bun run --bun rollup -c rollup.config.js",
     "format": "biome format --write ./src",
     "lint": "biome lint --write ./src",
     "docs": "typedoc --out ./docs ./src/index.ts"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "1.9.1",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
-    "rollup": "^4.21.3",
+    "rollup": "^4.22.0",
     "tslib": "^2.7.0",
-    "typedoc": "^0.26.5"
+    "typedoc": "^0.26.7"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
